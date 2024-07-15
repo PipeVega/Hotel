@@ -71,7 +71,7 @@
                     <th scope="col"> Apellidos </th>
                     <th scope="col"> Correo </th>
                     <th scope="col"> RUT </th>
-                    <th scope="col"> Subscrito </th>
+                    <th scope="col"> Estado </th>
                     <th scope="col"> Imagen </th>
                     <th scope="col"> Acciones </th>
                 </tr>
@@ -86,7 +86,7 @@
                         <td> {{ usuario.last_name }} </td>
                         <td> {{ usuario.email }} </td>
                         <td> {{ usuario.perfil.rut }} </td>
-                        <td> {% if usuario.perfil.subscrito %} Sí {% else %} No {% endif %} </td>
+                        <td> {% if usuario.perfil.subscrito %} Reservando {% else %} Sin Reservar {% endif %} </td>
                         <td>
                             <img src="/media/{{ usuario.perfil.imagen }}" class="img-thumbnail btn-design2" style="max-height: 75px;">
                         </td>

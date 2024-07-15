@@ -42,6 +42,23 @@ def index(request):
 
     return render(request, 'core/index.html', context)
 
+def habitaciones(request):
+
+    if request.method == 'POST':
+        buscar = request.POST.get('buscar')
+        registros = Producto.objects.filter(nombre__icontains = buscar).order_by('nombre')
+
+    if request.method == 'GET':
+        registros = Producto.objects.all().order_by('nombre')
+    
+    productos = []
+    for registro in registros:
+        productos.append(obtener_info_producto(registro.id))
+    
+    context = { 'productos': productos }
+
+    return render(request, 'core/habitaciones.html', context)
+
 def ficha(request, producto_id):
     context = obtener_info_producto(producto_id)
     return render(request, 'core/ficha.html', context)
@@ -356,7 +373,7 @@ def eliminar_producto_en_bodega(request, bodega_id):
     return redirect(bodega)
 
 @user_passes_test(es_cliente_autenticado_y_activo)
-def miscompras(request):
+def misreservas(request):
 
     boletas = Boleta.objects.filter(cliente=request.user.perfil)
     historial = []
@@ -489,7 +506,7 @@ def calcular_precios_producto(producto):
 
 # VISTAS y FUNCIONES DE COMPRAS
 
-def comprar_ahora(request):
+def reservar_ahora(request):
     messages.error(request, f'El pago aún no ha sido implementado.')
     return redirect(index)
 

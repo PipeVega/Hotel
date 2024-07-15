@@ -11,7 +11,7 @@
       Hotel Veranum
     </title>
 
-    <link type="image/x-icon" rel="shortcut icon" href="{% static 'core/img/favicon.ico' %}"/>
+    <link type="image/x-icon" rel="shortcut icon" href="{% static 'core/img/v.png' %}"/>
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -32,9 +32,9 @@
   <body class="fondoprincipal">
 
     <nav class="navbar navbar-expand-lg pagelayout-1 bg-body-tertiary ">
-      <div class="container-fluid">
-        <img class="logo" src="{% static 'core\img\gamepad_103268.png' %}"/>
-        <a class="navbar-brand" href="{% url "index" %}"> Start Game </a>
+      <div class="container">
+        <img class="logo" src="{% static 'core\img\v.png' %}"/>
+        <a class="navbar-brand" href="{% url "index" %}"> Hotel Veranum </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,11 @@
             <li class="nav-item">
               <a class="nav-link inicio" aria-current="page " href="{% url "index" %}"> Inicio </a>
             </li>
-            
+
+            <li class="nav-item">
+              <a class="nav-link inicio" aria-current="page " href="{% url "habitaciones" %}"> Habitaciones </a>
+            </li>
+
             {% if not user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link registrarme" href="{% url "registrarme" %}"> Registrarme </a>
@@ -55,7 +59,7 @@
             {% endif %}
             
             <li class="nav-item">
-              <a class="nav-link nosotros" href="{% url "nosotros" %}"> Nosotros </a>
+              <a class="nav-link nosotros" href="{% url "nosotros" %}">Sobre Nosotros</a>
             </li>
             
             {% if not user.is_authenticated %}
@@ -87,7 +91,7 @@
                   <li><a class="dropdown-item" href="{% url 'misdatos' %}"> Mis datos </a></li>
                   <li><a class="dropdown-item" href="{% url 'mipassword' %}"> Cambiar mi contraseña </a></li>
                   {% if not user.is_staff and not user.is_superuser %}
-                    <li><a class="dropdown-item" href="{% url 'miscompras' %}"> Mis compras </a></li>
+                    <li><a class="dropdown-item" href="{% url 'miscompras' %}"> Mis reservas </a></li>
                   {% endif %}
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'salir' %}"> Salir </a></li>
@@ -116,15 +120,11 @@
               </li>
             {% endif %}
           </ul>
-          
-          <a href="{% url 'ropa' %}">
-            <img src="{% static 'core/img/CONCURSO.png' %}" width="100px">
-          <a/>
 
           <form method="post" action="{% url 'index' %}" class="d-flex" role="search">
             {% csrf_token %}
 
-            <input class="form-control me-2" type="search" placeholder="Buscar productos" 
+            <input class="form-control me-2" type="search" placeholder="Buscar habitaciones" 
                 aria-label="Search" id="buscar" id="buscar" name="buscar">
             
             <button class="btn btn-outline-success" type="submit"> Buscar </button>
