@@ -101,45 +101,6 @@ def poblar_bd(test_user_email=''):
         imagen='perfiles/mujerjoven.jpg')
 
     crear_usuario(
-        username='ejara',
-        tipo='Cliente', 
-        nombre='Emilio', 
-        apellido='Jara', 
-        correo=test_user_email if test_user_email else 'ejara@gmail.com', 
-        es_superusuario=False, 
-        es_staff=False, 
-        rut='17.056.219-6', 
-        direccion='120 Calle Los Leones,Estación Central, \nSantiago, RM \nChile', 
-        subscrito=True, 
-        imagen='perfiles/hombrejoven.jpg')
-
-    crear_usuario(
-        username='msaavedra',
-        tipo='Cliente', 
-        nombre='Matías', 
-        apellido='Saavedra', 
-        correo=test_user_email if test_user_email else 'msaavedra@gmail.com', 
-        es_superusuario=False, 
-        es_staff=False, 
-        rut='12.573.102-9', 
-        direccion='1344 Pasaje Las Rejas,La Reina, \nSantiago, RM \nChile', 
-        subscrito=False, 
-        imagen='perfiles/adulto.jpg')
-
-    crear_usuario(
-        username='afernandez',
-        tipo='Cliente', 
-        nombre='Alison', 
-        apellido='Fernandez', 
-        correo=test_user_email if test_user_email else 'afernandez@gmail.com', 
-        es_superusuario=False, 
-        es_staff=False, 
-        rut='21.076.564-1', 
-        direccion='1987 Av. Las Lomas, San Bernardo, \nSantiago, RM \nChile', 
-        subscrito=False, 
-        imagen='perfiles/jovenmujer.jpg')
-
-    crear_usuario(
         username='bjana',
         tipo='Administrador', 
         nombre='Bastián', 
@@ -151,19 +112,6 @@ def poblar_bd(test_user_email=''):
         direccion='1806 Pasaje Parque Japonés, \nPunta Arenas \nChile', 
         subscrito=False, 
         imagen='perfiles/jovenhombre.jpg')
-    
-    crear_usuario(
-        username='ahernandez',
-        tipo='Administrador', 
-        nombre='Alexis', 
-        apellido='Hernández', 
-        correo=test_user_email if test_user_email else 'ahernandez@gmail.com', 
-        es_superusuario=False, 
-        es_staff=True, 
-        rut='12.659.014-3', 
-        direccion='129 Pasaje Margarita, Padre Hurtado, \nSantiago, RM \nChile', 
-        subscrito=False, 
-        imagen='perfiles/adultoh.jpg')
 
     crear_usuario(
         username='alejandrosuper',
@@ -179,10 +127,9 @@ def poblar_bd(test_user_email=''):
         imagen='perfiles/hombre.jpg')
     
     categorias_data = [
-        { 'id': 1, 'nombre': 'Acción'},
-        { 'id': 2, 'nombre': 'Aventura'},
-        { 'id': 3, 'nombre': 'Estrategia'},
-        { 'id': 4, 'nombre': 'RPG'},
+        { 'id': 1, 'nombre': 'Suite'},
+        { 'id': 2, 'nombre': 'Simple'},
+        { 'id': 3, 'nombre': 'Doble'},
     ]
 
     print('Crear categorías')
@@ -191,210 +138,131 @@ def poblar_bd(test_user_email=''):
     print('Categorías creadas correctamente')
 
     productos_data = [
-        # Categoría "Acción" (8 juegos)
+        # Categoría "Suite" (6 habitaciones)
         {
             'id': 1,
             'categoria': Categoria.objects.get(id=1),
-            'nombre': 'Sekiro™: Shadows Die Twice - GOTY Edition',
-            'descripcion': 'Sekiro™: Shadows Die Twice - GOTY Edition te sumerge en el Japón feudal, donde la honorabilidad y la venganza se entrelazan en una historia épica. Encarna a un guerrero deshonrado conocido como el "Lobo de un solo brazo", dotado con habilidades mortales y una prótesis shinobi única. Explora paisajes impresionantes y enfrenta desafíos implacables mientras te adentras en un conflicto brutal entre el deber y la redención. Domina el combate estratégico y la sigilosa infiltración para derrotar a poderosos adversarios, incluyendo a temibles jefes que pondrán a prueba tus habilidades al límite. Vive una experiencia inolvidable donde cada victoria se gana con perseverancia y precisión, en un mundo donde la muerte es solo el comienzo de tu camino hacia la gloria.',
-            'precio': 60000,
+            'nombre': 'Suite Presidencial',
+            'descripcion': 'La Suite Presidencial es la habitación más exclusiva y lujosa de nuestro hotel. Diseñada para ofrecer una experiencia de hospedaje excepcional, esta suite cuenta con una amplia sala de estar con elegantes muebles, una chimenea y vistas panorámicas a la ciudad. La zona de descanso incluye una cama king size con sábanas de algodón egipcio de alta calidad y un baño privado con tina de hidromasaje, ducha de lluvia y amenidades de lujo.',
+            'precio': 1000000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/Sekiro.jpeg'
+            'imagen': 'productos/SuitePresidencial.jpeg'
         },
         {
             'id': 2,
             'categoria': Categoria.objects.get(id=1),
-            'nombre': 'KINGDOM HEARTS -HD 1.5+2.5 ReMIX-',
-            'descripcion': 'KINGDOM HEARTS -HD 1.5+2.5 ReMIX- te invita a embarcarte en un viaje mágico a través de mundos encantados y personajes icónicos de Disney y Square Enix. Revive las emocionantes aventuras de Sora, un joven con el poder de la Llave Espada, mientras viaja a través de diversos universos para proteger la luz y enfrentar las fuerzas de la oscuridad. Explora mundos como el Castillo Disney, Ciudad de Halloween y la Tierra de Dragones, entre muchos otros, mientras te enfrentas a enemigos desafiantes y resuelves misterios que afectan a cada mundo. Sumérgete en una narrativa rica y compleja que combina elementos de acción, rol y amistad en una experiencia que captura la magia de los cuentos clásicos y la emoción de los videojuegos modernos.',
-            'precio': 40000,
+            'nombre': 'Suite Matrimonial',
+            'descripcion': 'Preparada especialmente para parejas recién casadas, esta suite cuenta con una elegante cama king size con dosel, decoración romántica y un baño con tina de hidromasaje y ducha de lluvia. Además, incluye un espacio de estar con chimenea, TV de pantalla plana y un pequeño balcón privado con vistas a los jardines del hotel.',
+            'precio': 550000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/Kingdom.jpg'
+            'imagen': 'productos/SuiteMatrimonial.jpg'
         },
         {
             'id': 3,
             'categoria': Categoria.objects.get(id=1),
-            'nombre': 'Horizon Forbidden West™ Complete Edition',
-            'descripcion': 'Horizon Forbidden West™ Complete Edition te transporta a un mundo vibrante y postapocalíptico, donde la naturaleza ha reclamado las ruinas de una civilización perdida. Embárcate en una aventura épica como Aloy, una valiente cazadora en busca de respuestas sobre catastróficos eventos que amenazan con destruir lo que queda de la humanidad. Explora paisajes impresionantes que van desde selvas exuberantes hasta desiertos desolados, enfrentándote a máquinas colosales y tribus hostiles en el camino. Descubre secretos ancestrales y utiliza habilidades únicas para superar desafíos estratégicos y emocionantes combates. Vive una historia inolvidable de descubrimiento y redención en un mundo donde el destino de la humanidad pende de un hilo.',
-            'precio': 50000,
+            'nombre': 'Suite Ejecutiva',
+            'descripcion': 'Diseñada para satisfacer las necesidades de los huéspedes de negocios, esta suite cuenta con una cómoda cama king, un amplio escritorio de trabajo, conexión a internet de alta velocidad y una zona de estar separada con sofá y sillón. El baño privado tiene ducha, tina y amenidades de lujo.',
+            'precio': 600000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/Horizon.jpg'
+            'imagen': 'productos/SuiteEjecutiva.jpg'
         },
         {
             'id': 4,
             'categoria': Categoria.objects.get(id=1),
-            'nombre': 'Street Fighter™ 6',
-            'descripcion': 'Street Fighter™ 6 continúa la legendaria saga de combate callejero con nuevos gráficos impresionantes y mecánicas de juego mejoradas. Sumérgete en intensos enfrentamientos uno contra uno con una selección de personajes clásicos y nuevos luchadores que desafiarán tus habilidades. Experimenta combates rápidos y estratégicos donde cada movimiento cuenta, desde poderosos ataques especiales hasta precisos combos. Participa en torneos globales y desafía a jugadores de todo el mundo en el modo multijugador online. Con gráficos de última generación y una jugabilidad dinámica, Street Fighter™ 6 promete llevar la experiencia de lucha callejera a nuevas alturas mientras honra la tradición y el legado de la franquicia.',
-            'precio': 45000,
+            'nombre': 'Suite Familiar',
+            'descripcion': 'Ideal para familias, esta suite ofrece una recámara principal con cama king y una segunda recámara con camas individuales. Tiene una sala de estar separada con sofá cama para acomodar a los niños. Incluye un baño completo, nevera y microondas para mayor comodidad.',
+            'precio': 680000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'productos/StreetFighte6.jpg'
+            'imagen': 'productos/SuiteFamiliar.jpg'
         },
         {
             'id': 5,
             'categoria': Categoria.objects.get(id=1),
-            'nombre': 'Monster Hunter: World',
-            'descripcion': 'Monster Hunter: World te transporta a un mundo lleno de criaturas colosales y paisajes exuberantes por explorar. Embárcate en emocionantes expediciones como un cazador experto, donde enfrentarás bestias imponentes y desafiantes en un ecosistema vivo y dinámico. Utiliza habilidades y estrategias para rastrear y derrotar monstruos épicos, recolectando recursos para mejorar tu equipo y enfrentar desafíos aún mayores. Forma equipo con otros cazadores en el modo multijugador cooperativo para realizar misiones épicas y obtener recompensas únicas. Vive una experiencia de caza incomparable donde la astucia y la valentía te llevarán a descubrir los secretos de un mundo lleno de peligros y maravillas.',
-            'precio': 23000,
+            'nombre': 'Suite Panorámica',
+            'descripcion': 'Con impresionantes vistas a la ciudad, esta suite cuenta con una amplia sala de estar y una recámara principal con cama king. El baño privado tiene una espectacular tina de hidromasaje junto a grandes ventanales. Además, tiene una terraza privada con muebles de exterior.',
+            'precio': 750000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 20,
-            'imagen': 'productos/MonsterHunter.jpeg'
+            'imagen': 'productos/SuitePanoramica.jpeg'
         },
         {
             'id': 6,
             'categoria': Categoria.objects.get(id=1),
-            'nombre': 'DRAGON BALL Z: KAKAROT',
-            'descripcion': 'DRAGON BALL Z: KAKAROT te invita a revivir la épica saga de Dragon Ball Z desde una perspectiva totalmente nueva. Embárcate en una aventura inolvidable como Goku y otros icónicos personajes de la serie, explorando vastos mundos, combatiendo contra formidables enemigos y desbloqueando poderosas habilidades. Sumérgete en una narrativa profunda que abarca desde la llegada de los Saiyans hasta la saga de Majin Buu, experimentando momentos clave y emocionantes batallas a lo largo de la historia. Además, disfruta de actividades secundarias, como pescar, volar y entrenar, que enriquecen aún más la experiencia de juego en este universo lleno de acción y aventura.',
-            'precio': 48000,
+            'nombre': 'Suite Deluxe',
+            'descripcion': 'Esta suite de estilo contemporáneo ofrece una cómoda cama king, una acogedora sala de estar con chimenea y un escritorio de trabajo. El baño cuenta con una ducha de lluvia, tina y amenidades premium. Otras comodidades incluyen un minibar, cafetera y acceso a un lounge privado.',
+            'precio': 800000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/DragonBall.jpeg'
+            'imagen': 'productos/SuiteDeluxe.jpeg'
         },
-        {
-            'id': 7,
-            'categoria': Categoria.objects.get(id=1),
-            'nombre': 'A Way Out',
-            'descripcion': 'A Way Out es una experiencia única de juego cooperativo que sigue la historia de dos prisioneros, Leo y Vincent, quienes deben colaborar para escapar de la cárcel y enfrentarse a una serie de desafíos peligrosos mientras buscan venganza. El juego se destaca por su enfoque en la cooperación entre jugadores, ya que ambos deben trabajar juntos para resolver acertijos, superar obstáculos y tomar decisiones cruciales que afectan el curso de la historia. Con un enfoque cinematográfico y momentos de acción intensa, A Way Out ofrece una narrativa emocionante y una jugabilidad innovadora diseñada para ser disfrutada junto a un amigo en línea o en pantalla dividida.',
-            'precio': 30000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 0,
-            'imagen': 'productos/AWayOut.jpg'
-        },
-        {
-            'id': 8,
-            'categoria': Categoria.objects.get(id=1),
-            'nombre': 'Resident Evil 4',
-            'descripcion': 'Resident Evil 4 es un clásico del survival horror que sigue a Leon S. Kennedy, un agente especial, en una misión para rescatar a la hija del presidente de los Estados Unidos, quien ha sido secuestrada por un culto misterioso en una remota zona rural de Europa. El juego presenta una mezcla única de acción y terror, con una perspectiva sobre el hombro que cambió la forma en que se experimentan los juegos de la serie Resident Evil. Enfréntate a hordas de infectados y enfrenta a enemigos desafiantes en entornos variados, desde aldeas hasta castillos antiguos. Con mecánicas de juego innovadoras y una historia envolvente llena de giros inesperados, Resident Evil 4 ha sido aclamado como uno de los mejores juegos de su género y una experiencia inolvidable para los amantes del survival horror y los juegos de acción.',
-            'precio': 30000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 15,
-            'imagen': 'productos/ResidentEvil4.jpg'
-        },
-        # Categoría "Aventura" (4 juegos)
+
+        # Categoría "Simple" (3 habitaciones)
         {
             'id': 9,
             'categoria': Categoria.objects.get(id=2),
-            'nombre': 'It Takes Two',
-            'descripcion': 'It Takes Two es un juego de aventuras y plataformas cooperativo desarrollado por Hazelight Studios. La historia sigue a Cody y May, una pareja que se ha convertido en muñecos debido a un hechizo, y ahora deben trabajar juntos para encontrar una manera de volver a ser humanos. Cada jugador controla a uno de los personajes y colabora en una variedad de desafíos y puzzles ingeniosos diseñados para fomentar la cooperación y la comunicación. El juego se destaca por su narrativa emotiva y humorística, así como por su jugabilidad innovadora que aprovecha al máximo la experiencia cooperativa. It Takes Two ofrece una experiencia única que celebra la amistad y la colaboración en un viaje lleno de sorpresas y momentos memorables.',
-            'precio': 16000,
+            'nombre': 'Habitación Estándar',
+            'descripcion': 'Ésta cómoda habitación cuenta con una cama queen size, una zona de estar con sillón, escritorio de trabajo y TV de pantalla plana. El baño privado tiene ducha y ofrece artículos de aseo básicos. Ideal para viajes de negocios o de placer.',
+            'precio': 160000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/ItTakesTwo.jpeg'
+            'imagen': 'productos/SimpleEstandar.jpeg'
         },
         {
             'id': 10,
             'categoria': Categoria.objects.get(id=2),
-            'nombre': 'Hogwarts Legacy',
-            'descripcion': 'Hogwarts Legacy es un juego de rol de acción ambientado en el mundo mágico de Harry Potter, desarrollado por Portkey Games y publicado por Warner Bros. Interactive Entertainment. Ambientado en el siglo XIX, mucho antes de los eventos de la serie de libros de Harry Potter, el juego te permite explorar un Hogwarts expansivo y sus alrededores mientras descubres secretos antiguos y enfrentas peligrosas criaturas mágicas.',
-            'precio': 30000,
+            'nombre': 'Habitación Superior',
+            'descripcion': 'Con una decoración moderna y elegante, ésta habitación cuenta con una cama king size, área de descanso con sofá y mesa de café, y escritorio de trabajo. El baño privado incluye tina y ducha. Ofrece vistas a los jardines o a la ciudad.',
+            'precio': 200000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 20,
-            'imagen': 'productos/Hogwarts.jpg'
+            'imagen': 'productos/SimpleSuperior.jpg'
         },
         {
             'id': 11,
             'categoria': Categoria.objects.get(id=2),
-            'nombre': 'Far Cry® 6',
-            'descripcion': 'Far Cry® 6 es un juego de acción y aventuras desarrollado por Ubisoft. Ambientado en la ficticia isla caribeña de Yara, el juego te sitúa en medio de una revolución contra un dictador implacable conocido como Antón Castillo, interpretado por Giancarlo Esposito. Los jugadores asumen el papel de Dani Rojas, un guerrillero que lucha para liberar a su país del régimen opresivo de Castillo.',
-            'precio': 48000,
+            'nombre': 'Habitación Deluxe',
+            'descripcion': 'Habitación amplia y luminosa con cama king size, zona de estar con sillones, escritorio y TV de pantalla plana de gran tamaño. El baño privado cuenta con tina y ducha separadas. Incluye un balcón privado con muebles de exterior.',
+            'precio': 240000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/FarCry.jpeg'
+            'imagen': 'productos/SimpleDeluxe.jpeg'
         },
-        {
-            'id': 12,
-            'categoria': Categoria.objects.get(id=2),
-            'nombre': 'FINAL FANTASY VII REMAKE INTERGRADE',
-            'descripcion': 'FINAL FANTASY VII REMAKE INTERGRADE es una versión mejorada para PlayStation 5 de Final Fantasy VII Remake. Incluye mejoras gráficas y un nuevo episodio protagonizado por Yuffie Kisaragi, ofreciendo una experiencia enriquecida y visualmente impresionante del clásico juego de Square Enix.',
-            'precio': 70000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 15,
-            'imagen': 'productos/FinalFantasy.jpeg'
-        },
-        # Categoría "Estrategia" (4 juegos)
+
+        # Categoría "Doble" (3 habitaciones)
         {
             'id': 13,
             'categoria': Categoria.objects.get(id=3),
-            'nombre': 'Age Of Empires IV The Sultans Ascend',
-            'descripcion': 'The Sultans Ascend (DLC) es una expansión del popular juego de estrategia en tiempo real Age of Empires IV, desarrollado por Relic Entertainment y publicado por Xbox Game Studios. Este DLC introduce nuevas campañas, civilizaciones, unidades y mecánicas de juego centradas en la historia y la influencia de los sultanes en el mundo medieval.',
-            'precio': 30000,
+            'nombre': 'Habitación Doble Estándar',
+            'descripcion': 'Esta cómoda habitación cuenta con dos camas individuales, una zona de estar con sillón, escritorio de trabajo y TV de pantalla plana. El baño privado tiene ducha y ofrece artículos de aseo básicos. Ideal para viajes de negocios o de placer.',
+            'precio': 300000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'productos/AgeOfEmpires4TSA.jpg'
+            'imagen': 'productos/DobleEstandar.jpg'
         },
         {
             'id': 14,
             'categoria': Categoria.objects.get(id=3),
-            'nombre': 'Persona 3 Reload',
-            'descripcion': 'Persona 3 Reload es una versión mejorada y relanzada del aclamado juego de rol japonés Persona 3. Desarrollado por Atlus, este juego sigue la historia de un grupo de estudiantes que descubren la capacidad de invocar y controlar poderosas entidades conocidas como Personas durante la "Hora Oscura", un período de tiempo oculto entre un día y otro.',
-            'precio': 70000,
+            'nombre': 'Habitación Doble Superior',
+            'descripcion': 'Con una decoración moderna y elegante, esta habitación cuenta con dos camas queen size, área de descanso con sofá y mesa de café, y escritorio de trabajo. El baño privado incluye tina y ducha. Ofrece vistas a los jardines o a la ciudad.',
+            'precio': 350000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/Persona3.jpg'
+            'imagen': 'productos/DobleSuperior.jpg'
         },
         {
             'id': 15,
             'categoria': Categoria.objects.get(id=3),
-            'nombre': 'Jurassic World Evolution 2',
-            'descripcion': 'Jurassic World Evolution 2 es la secuela del popular juego de simulación de parques de dinosaurios desarrollado por Frontier Developments. En este juego, los jugadores pueden construir y gestionar su propio parque temático de dinosaurios, enfrentándose a nuevos desafíos y emocionantes mecánicas de juego basadas en la franquicia Jurassic World.',
-            'precio': 27000,
+            'nombre': 'Habitación Doble Deluxe',
+            'descripcion': 'Habitación amplia y luminosa con dos camas queen size, zona de estar con sillones, escritorio y TV de pantalla plana de gran tamaño. El baño privado cuenta con tina y ducha separadas. Incluye un balcón privado con muebles de exterior.',
+            'precio': 450000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/Jurassic.jpeg'
+            'imagen': 'productos/DobleDeluxe.jpeg'
         },
-        {
-            'id': 16,
-            'categoria': Categoria.objects.get(id=3),
-            'nombre': 'Persona 5 Royal',
-            'descripcion': 'Persona 5 Royal es una versión expandida y mejorada del aclamado juego de rol japonés Persona 5, desarrollado por Atlus. Esta versión incluye nuevos personajes, escenarios y mecánicas de juego que enriquecen aún más la experiencia original.',
-            'precio': 59990,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 10,
-            'imagen': 'productos/Persona5.jpg'
-        },
-        # Categoría "RPG" (4 juegos)
-        {
-            'id': 17,
-            'categoria': Categoria.objects.get(id=4),
-            'nombre': 'Dark Souls III',
-            'descripcion': 'Dark Souls III es un juego de acción y RPG desarrollado por FromSoftware, conocido por su dificultad desafiante y su atmósfera oscura y melancólica. Ambientado en un mundo devastado por la maldición de la No Muerte, los jugadores asumen el papel de un Ashen One, explorando paisajes góticos y enfrentándose a monstruosas criaturas en busca de respuestas y una salida a la oscuridad que amenaza con consumir todo.',
-            'precio': 48000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 10,
-            'imagen': 'productos/DarkSouls.jpeg'
-        },
-        {
-            'id': 18,
-            'categoria': Categoria.objects.get(id=4),
-            'nombre': 'Baldurs Gate',
-            'descripcion': 'Baldurs Gate es una serie clásica de juegos de rol desarrollada por BioWare y basada en el sistema de reglas de Dungeons & Dragons. Ambientada en el mundo de los Reinos Olvidados, los jugadores se embarcan en épicas aventuras llenas de intriga, magia y combate estratégico.',
-            'precio': 30000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 5,
-            'imagen': 'productos/BaldursGate.jpg'
-        },
-        {
-            'id': 19,
-            'categoria': Categoria.objects.get(id=4),
-            'nombre': 'Starfield',
-            'descripcion': 'Starfield es un próximo juego de rol y ciencia ficción desarrollado por Bethesda Game Studios y publicado por Bethesda Softworks. Anunciado oficialmente en el E3 2018, Starfield es la primera nueva franquicia desarrollada por Bethesda en 25 años. El juego promete llevar a los jugadores a un vasto universo lleno de exploración espacial, aventuras y misterios.',
-            'precio': 30000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 15,
-            'imagen': 'productos/Starfield.jpg'
-        },
-        {
-            'id': 20,
-            'categoria': Categoria.objects.get(id=4),
-            'nombre': 'Diablo 2: Resurrected',
-            'descripcion': 'Diablo 2: Resurrected es una remasterización del clásico juego de acción RPG Diablo 2, desarrollado por Blizzard Entertainment. Este juego sigue la historia del guerrero que se enfrenta a las hordas demoníacas que amenazan con destruir el mundo de Santuario.',
-            'precio':20000,
-            'descuento_subscriptor': 5,
-            'descuento_oferta': 0,
-            'imagen': 'productos/DiabloII.jpeg'
-        }
     ]
 
     print('Crear productos')
@@ -444,10 +312,10 @@ def poblar_bd(test_user_email=''):
             if estado == 'Anulado':
                 fecha_despacho = None
                 fecha_entrega = None
-            elif estado == 'Vendido':
+            elif estado == 'Reservado':
                 fecha_despacho = None
                 fecha_entrega = None
-            elif estado == 'Despachado':
+            elif estado == 'Disponible':
                 fecha_entrega = None
             boleta = Boleta.objects.create(
                 nro_boleta=nro_boleta, 
